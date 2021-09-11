@@ -6,6 +6,7 @@ function App() {
   var [cashGivenValue, setCashGivenValue] = useState(0);
   var [message, setMessage] = useState("");
   var notes = [2000,500,100,20,10,5,1];
+  var numberOfNotes=[];
   function billAmountHandler(event) {
     billAmountValue = event.target.value;
     setBillAmountValue(billAmountValue);
@@ -20,6 +21,7 @@ function App() {
      for(var i=0; i<notes.length; i++){
        var notesCount= Math.trunc(amountDifference/notes[i]);
        amountDifference=amountDifference % notes[i];
+       numberOfNotes.push(notesCount);
      }
   }
   function onClickHandler() {
@@ -51,26 +53,30 @@ function App() {
       <div className="message">{message}</div>
       <table>
         <caption className="tableCaption">Return Change</caption>
+        <tbody>
         <tr>
           <th>Number of Notes</th>
-          <th id="note2000"></th>
-          <th id="note500"></th>
-          <th id="note100"></th>
-          <th id="note20"></th>
-          <th id="note10"></th>
-          <th id="note5"></th>
-          <th id="note1"></th>
+          {
+            numberOfNotes.map(function(item){
+              return(
+                console.log(item)
+                
+              )
+            })
+          }
         </tr>
         <tr>
           <th>Notes</th>
-          <th>2000</th>
-          <th>500</th>
-          <th>100</th>
-          <th>20</th>
-          <th>10</th>
-          <th>5</th>
-          <th>1</th>
+          <td>2000</td>
+          <td>500</td>
+          <td>100</td>
+          <td>20</td>
+          <td>10</td>
+          <td>5</td>
+          <td>1</td>
         </tr>
+        </tbody>
+        
       </table>
     </div>
   );
